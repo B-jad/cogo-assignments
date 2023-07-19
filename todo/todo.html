@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My To-Do List</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <link rel="stylesheet" href="todo.css">
+    <body>
+        <div style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
+            <div>
+                <h1>My To-Do List</h1>
+            </div>
+            <div>
+                <form id="form">
+                    <!-- <label>New Task:</label> -->
+                    <input placeholder="Add a new task" type="text" id="inputTask">
+                    <button class="add-button" type="button" onclick="return addNewTask()">
+                        Add+
+                        <!-- <i class="fa-solid fa-plus" ></i> -->
+                        <!-- <img style="width: 24px; height: 24px;" src="/tood/add.png"> -->
+                    </button>
+                </form>
+            </div>
+            <div>
+                <h3 style="text-align: center;">Tasks left</h3>
+                <ul id="taskList">
+
+                </ul>
+
+            </div>
+        </div>
+    <script src="todo.js"></script>
+    </body>
+</html>

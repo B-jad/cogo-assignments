@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MovieBuff</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <link rel="stylesheet" href="movie.css">
+    <body>
+        <h1>Let's Binge!</h1>
+        <div>
+            Which one's next?<br>
+            <input placeholder="Next movie" id="search" >
+        </div>
+        <div id="movieData">
+
+        </div>
+        <div>
+            <ul id="movieList">
+
+            </ul>
+        </div>
+        <div style="display: flex;">
+            <img style="background-color: #fff; width: 24px; height: 24px;" src="../movie-app/angles-left-solid.svg" onclick="return leftarrow()">
+            <div id="pageNumber"></div>
+            <img style="background-color: #fff; width: 24px; height: 24px;" src="../movie-app/angles-right-solid.svg" onclick="return rightarrow()">
+        </div>
+    <script src="movie.js"></script>
+    </body>
+</html>

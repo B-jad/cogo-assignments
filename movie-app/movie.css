@@ -1,0 +1,53 @@
+body
+{
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#movieList
+{
+    list-style-type: none;
+}
+
+#list-item-div
+{
+    display: flex;
+    margin: 20px;
+}
+
+#list-item-div img
+{
+    width: 200px;
+    height: 300px;
+}
+
+#list-item-div h2
+{
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: grey;
+    width: 500px;
+}
+
+#pageNumber
+{
+    margin: auto 10px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+#movieData
+{
+    background-color: rgb(138, 131, 124);
+    margin: 20px;
+    padding: 20px;
+}

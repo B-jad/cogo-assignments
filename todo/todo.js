@@ -45,12 +45,12 @@ function showList(){
         let text = document.createElement('div');
         if(!tasks[i].completed)
         {
-          checkimg.src = "/assignments/todo/square-regular.svg";
+          checkimg.src = "../todo/square-regular.svg";
           // li.id = "notCompleted";
         }
         else
         {
-          checkimg.src = "/assignments/todo/square-check-regular.svg";
+          checkimg.src = "../todo/square-check-regular.svg";
           text.style.textDecorationLine = "line-through";
           // li.id = "Completed";
         }

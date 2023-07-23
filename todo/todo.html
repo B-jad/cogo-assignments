@@ -12,6 +12,7 @@
                 <h1>My To-Do List</h1>
             </div>
             <div>
+                <div style="color: black; font-size: 12px; margin: 3px; text-align: center;">Add ' ** ' for high priority and ' * ' for medium priority</div>
                 <form id="form">
                     <!-- <label>New Task:</label> -->
                     <input placeholder="Add a new task" type="text" id="inputTask">
@@ -24,6 +25,14 @@
             </div>
             <div>
                 <h3 style="text-align: center;">Tasks left</h3>
+                <div id="sort-options">
+                    Sort : 
+                    <button onclick="return asort()">Priority: High-Low</button>
+                    <button onclick="return dsort()">Priority: Low-High</button>
+                    <button onclick="return asortdate()">Newest Task</button>
+                    <button onclick="return dsortdate()">Oldest Task</button>
+                    <button onclick="return showPendingBool()" id="pendingbutton">View Pending Tasks</button>
+                </div>
                 <ul id="taskList">
 
                 </ul>

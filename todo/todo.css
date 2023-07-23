@@ -4,21 +4,21 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #000;
-    color: aliceblue;
+    background-color: #eee;
+    color: #6a615f;;
 }
 
 h1{
-    color: gray;
-    background-color: whitesmoke;
+    color: #d3cfbe;
+    background-color: #6a615f;
     border-radius: 15px;
     padding: 10px 40px;
 }
 
 #inputTask
 {
-    color: gray;
-    background-color: whitesmoke;
+    color: black;
+    background-color: #d3cfbe;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     padding: 10px 40px;
@@ -29,14 +29,14 @@ h1{
     padding: 10px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: slategray;
+    background-color: #6a615f;
     color: aliceblue;
 }
 
 li
 {
     padding: 10px;
-    background-color: azure;
+    background-color: #d3cfbe;
     color: #000;
     border: 1px solid black;
     border-radius: 10px;
@@ -45,6 +45,13 @@ li
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 5px;
+}
+
+#Completed
+{
+    opacity: 0.8;
+    background-color: #806903;
 }
 
 #taskList
@@ -53,11 +60,17 @@ li
 }
 
 #taskList button{
-    background-color: grey;
+    background-color: #6a615f;
     color: aliceblue;
     border-radius: 5px;
     border: 0px solid grey;
     padding: 5px 10px;
+}
+
+#Completed button
+{
+    background-color: #d3cfbe;
+    color: black;
 }
 
 ul input 
@@ -65,5 +78,54 @@ ul input
     background-color: azure;
     border: 0px;
     width: 800px;
-    word-break: break-all;
+    word-break:break-word;
+}
+
+li img
+{
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+}
+
+#task-text
+{
+    display: flex;
+    flex: 1 1;
+    align-items: center;
+}
+
+#priority1
+{
+    opacity: 1;
+}
+
+#priority2
+{
+    opacity: 0.8;
+}
+
+#priority3
+{
+    opacity: 0.6;
+}
+
+#sort-options
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#sort-options button
+{
+    background-color: #6a615f;
+    color: aliceblue;
+    border-radius: 5px;
+    border: 0px solid grey;
+    padding: 5px 10px;
+    margin: auto 5px;
 }

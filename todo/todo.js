@@ -30,7 +30,6 @@ fetch('https://jsonplaceholder.typicode.com/todos')
 */
 
 function showList(){
-  console.log(tasks);
     window.localStorage.setItem("savedTodo",JSON.stringify(tasks));
     taskList.innerHTML = "";
     var size = tasks.length;
@@ -217,7 +216,6 @@ function showPendingList()
       if(!tasks[i].completed)
       {
         let li = document.createElement('li');
-        
         let task = document.createElement('div');
         let checkimg = document.createElement('img');
         if(tasks[i].priority == 1) li.style.background = "#edda8e";
@@ -242,7 +240,6 @@ function showPendingList()
         li.appendChild(options);
         li.dataset.item = i;
         taskList.appendChild(li);
-
         checkimg.addEventListener("click", function()
         {
             completedTask(li.dataset.item);

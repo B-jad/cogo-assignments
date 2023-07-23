@@ -223,7 +223,7 @@ function showPendingList()
         if(tasks[i].priority == 1) li.style.background = "#edda8e";
         else if(tasks[i].priority == 2) li.style.background = "#d4c692";
         let text = document.createElement('div');
-        checkimg.src = "/assignments/todo/square-regular.svg";
+        checkimg.src = "../todo/square-regular.svg";
         let options = document.createElement('div');
         let editButton = document.createElement('button');
         let deleteButton = document.createElement('button');

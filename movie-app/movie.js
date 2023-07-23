@@ -6,7 +6,9 @@ var MovieListData = [];
 var MovieList = [];
 var url =  "https://www.omdbapi.com/?apikey=d083ac07";
 var newurl = "";
+var Movie = [];
 var curPage = 1;
+var totalPages;
 pageNumber.innerText = 1;
 
 inputString.addEventListener("keyup", function(){
@@ -47,6 +49,7 @@ function showMovieList()
 {
     MovieWebList.innerHTML = "";
     MovieList = MovieListData.Search;
+    totalPages = MovieList.totalResults +1; 
     for(let i=0;i<MovieList.length;i++)
     {
         let listItem = document.createElement('li');
@@ -68,11 +71,13 @@ function showMovieList()
     pageNumber.innerText = curPage;
 }
 
+var movieid;
+
 function getMovieData(movieID)
 {
+    movieid = movieID;
     console.log("showmoviedata");
     let movieurl = url;
-    let Movie = [];
     movieurl+= "&i=" + movieID;
     setTimeout(function() {
         fetch(movieurl)
@@ -98,6 +103,7 @@ function getMovieData(movieID)
 function showMovieData(movie)
 {
     movieData.innerHTML = "";
+    movieData.style.padding = "20px";
     let Item = document.createElement('div');
     let poster = document.createElement('img');
     let movieName = document.createElement('h2');
@@ -106,10 +112,74 @@ function showMovieData(movie)
     movieName.innerText = movie.Title;
     details.innerHTML = "Year: " + movie.Year + "<br> Genre: " + movie.Genre
                         + "Director: " + movie.Director + "<br>Actors: " + movie.Actors;
+    
+    let rating = document.createElement('div');
+    rating.id = "rating";
+    let currating = localStorage.getItem(movieid);
+    if(currating==1)
+    {
+        rating.innerHTML = ' <img src="../movie-app/star-solid.svg" onclick="return rated(1)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(2)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(3)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(4)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(5)"> ';
+    }
+    else if(currating==2)
+    {
+        rating.innerHTML = ' <img src="../movie-app/star-solid.svg" onclick="return rated(1)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(2)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(3)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(4)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(5)"> ';
+    }
+    else if(currating==3)
+    {
+        rating.innerHTML = ' <img src="../movie-app/star-solid.svg" onclick="return rated(1)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(2)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(3)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(4)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(5)"> ';
+    }
+    else if(currating==4)
+    {
+        rating.innerHTML = ' <img src="../movie-app/star-solid.svg" onclick="return rated(1)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(2)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(3)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(4)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(5)"> ';
+    }
+    else if(currating==5)
+    {
+        rating.innerHTML = ' <img src="../movie-app/star-solid.svg" onclick="return rated(1)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(2)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(3)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(4)">' +
+        ' <img src="../movie-app/star-solid.svg" onclick="return rated(5)"> ';
+    }
+    else
+    {
+        rating.innerHTML = ' <img src="../movie-app/star-regular.svg" onclick="return rated(1)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(2)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(3)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(4)">' +
+        ' <img src="../movie-app/star-regular.svg" onclick="return rated(5)"> ';
+    }
+    
+    let comment = document.createElement('input');
+    comment.id = "comment";
+    comment.placeholder = "How was the movie?"
     Item.appendChild(poster);
     Item.appendChild(movieName);
     Item.appendChild(details);
+    Item.appendChild(rating);
+    Item.appendChild(comment);
     movieData.appendChild(Item);
+}
+
+function rated(starnumber)
+{
+    localStorage.setItem(movieid,starnumber);
+    showMovieData(Movie);
 }
 
 function leftarrow()
@@ -118,24 +188,18 @@ function leftarrow()
     {
         curPage-=1;
         let pageurl = newurl;
-        let pagepromise = new Promise(function()
-        {
-            pageurl+= "&page=" + curPage;
-        })
-        pagepromise.then(getMovieList(pageurl));
+        pageurl+= "&page=" + curPage;
+        setTimeout(getMovieList,1000,pageurl);
     }
 }
 
 function rightarrow()
 {
-    // if(pageNumber!=1)
+    if(curPage<totalPages)
     {
         curPage+=1;
         let pageurl = newurl;
-        let pagepromise = new Promise(function()
-        {
-            pageurl+= "&page=" + curPage;
-        })
-        pagepromise.then(getMovieList(pageurl));
+        pageurl+= "&page=" + curPage;
+        setTimeout(getMovieList,1000,pageurl);
     }
 }

@@ -45,12 +45,12 @@ function showList(){
         let text = document.createElement('div');
         if(!tasks[i].completed)
         {
-          checkimg.src = "/assignments/todo/square-regular.svg";
+          checkimg.src = "../todo/square-regular.svg";
           // li.id = "notCompleted";
         }
         else
         {
-          checkimg.src = "/assignments/todo/square-check-regular.svg";
+          checkimg.src = "../todo/square-check-regular.svg";
           text.style.textDecorationLine = "line-through";
           // li.id = "Completed";
         }
@@ -79,7 +79,7 @@ function showList(){
             // console.log("here it is");
             // console.log(tasks, i-1);
             // tasks[i].completed = !tasks[i].completed;
-            showList();
+            decideListShow();
         })
         deleteButton.addEventListener("click", function()
         {
@@ -95,18 +95,18 @@ function showList(){
 function completedTask(item)
 {
   tasks[item].completed = !tasks[item].completed;
-  showList();
+  decideListShow();
 }
 
 function deleteFromList(item)
 {
     tasks.splice(item,1);
-    showList();
+    decideListShow();
 }
 
 function editList(item)
 {
-  showList();
+  decideListShow();
   let taskArray = taskList.childNodes;
   let textBox = document.createElement('input');
   let saveButton = document.createElement('button');
@@ -119,7 +119,7 @@ function editList(item)
   {
     if(textBox.value)
     tasks[item].title = textBox.value;
-    showList();
+    decideListShow();
   });
 
   saveButton.addEventListener("keypress", function(event)
@@ -129,7 +129,7 @@ function editList(item)
     {
       if(textBox.value)
       tasks[item].title = textBox.value;
-      showList();  
+      decideListShow();  
     } 
   });
 }
@@ -179,7 +179,7 @@ function addNewTask()
           timeAdded : curDate
         };
         tasks.push(addNew);
-        showList();
+        decideListShow();
     }
     newTask.value = "";
 }
@@ -187,28 +187,25 @@ function addNewTask()
 function dsort()
 {
   tasks.sort((a,b) => b.priority - a.priority);
-  showList();
+  decideListShow();
 }
 
 function asort()
 {
   tasks.sort((a,b) => a.priority - b.priority);
-  showList();
+  decideListShow();
 }
 
 function dsortdate()
 {
-  console.log("date sort");
-  
-  console.log(tasks[0].timeAdded - tasks[1].timeAdded)
   tasks.sort((a,b) => new Date(a.timeAdded) - new Date(b.timeAdded));
-  showList();
+  decideListShow();
 }
 
 function asortdate()
 {
   tasks.sort((a,b) => new Date(b.timeAdded) - new Date(a.timeAdded));
-  showList();
+  decideListShow();
 }
 
 function showPendingList()
@@ -249,10 +246,7 @@ function showPendingList()
         checkimg.addEventListener("click", function()
         {
             completedTask(li.dataset.item);
-            // console.log("here it is");
-            // console.log(tasks, i-1);
-            // tasks[i].completed = !tasks[i].completed;
-            showList();
+            decideListShow();
         })
         deleteButton.addEventListener("click", function()
         {
@@ -270,9 +264,12 @@ const pendingbutton = document.getElementById("pendingbutton");
 
 function showPendingBool()
 {
-  console.log(showlistbool);
   showlistbool = !showlistbool;
-  console.log(showlistbool);
+  decideListShow();
+}
+
+function decideListShow()
+{
   if(showlistbool) 
   {
     showList();
